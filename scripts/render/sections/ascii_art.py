@@ -29,7 +29,9 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
         r"S                                          ",
         r"S                                          ",
         r"S                                          ",
-        r"S                                          "
+        r"S                                          ",
+        r"?                                          ",
+        r"+"                                          "
     ]
     
     char_width = theme.get_char_width()
@@ -37,7 +39,7 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
     section_width = max_chars * char_width
     
     elements = []
-    current_y = theme.line_height * 2
+    current_y = 0
     for line in ascii_lines:
         elements.append(Element(x=0, y=current_y, raw_text=line, css_class="text ascii"))
         current_y += theme.line_height
