@@ -34,7 +34,7 @@ class SVGCanvas:
         return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {total_svg_width} {total_svg_height}" width="100%" height="auto">
     <defs>
         <style>
-            .text {{ 
+            .text, .text * {{ 
                 font-family: Consolas, "Cascadia Code", "JetBrains Mono", monospace; 
                 font-size: {self.theme.font_size}px; 
                 white-space: pre;
