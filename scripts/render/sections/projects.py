@@ -14,7 +14,7 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
         desc = p.description or ""
         if len(desc) > 40:
             desc = desc[:37] + "..."
-        stats = f" [{p.language}]" if p.language else ""
+        stats = f" {p.language}" if p.language else ""
         val = f"{desc}{stats}"
         
         lines.append([

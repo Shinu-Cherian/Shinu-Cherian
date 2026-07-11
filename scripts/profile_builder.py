@@ -180,6 +180,8 @@ class ProfileBuilder:
                 if pinned:
                     profile.featured_projects = [] # Clear yaml fallback
                     for p in pinned:
+                        if p.get("name", "").lower() == "clinexa":
+                            continue
                         lang = p.get("primaryLanguage") or {}
                         profile.featured_projects.append(FeaturedProject(
                             name=p.get("name", ""),
