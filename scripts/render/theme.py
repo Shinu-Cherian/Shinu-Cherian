@@ -4,10 +4,10 @@ from dataclasses import dataclass
 class Theme:
     padding: int = 50
     column_gap: int = 20
-    line_height: int = 24
-    section_gap: int = 24
+    line_height: int = 30
+    section_gap: int = 30
     
-    font_size: int = 16
+    font_size: int = 20
     
     # Base colors (to be overridden by subclasses)
     outer_bg: str = ""
