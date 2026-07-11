@@ -1,47 +1,37 @@
-name: Andrew Grant
-subtitle: CAM (Computer Aided Manufacturing) Operator
-location: Earth
-role: Software & Hardware Tinkerer
-current_focus: Building automated tooling
+name: Shinu Cherian
+subtitle: Software Developer
+location: India
+role: Full Stack Developer
+current_focus: Building awesome applications
 education: Self-taught
 
 contacts:
-  email_personal: agrantnmac@gmail.com
-  email_work: Andrew.Grant@ttmtech.com
-  discord: andrew6rant
+  email_personal: your.email@example.com
+  github: Shinu-Cherian
 
 social_links:
   - platform: LinkedIn
-    url: https://linkedin.com/in/andrew6rant
-    username: andrew6rant
+    url: https://linkedin.com/in/shinu-cherian
+    username: shinu-cherian
 
 featured_projects:
-  - name: ExampleProject
-    description: A placeholder for a featured project
+  - name: GitHub Profile
+    description: Dynamic terminal-themed SVG profile README
+    language: Python
 
 skills:
   - category: Languages.Programming
     items:
-      - Java
       - Python
       - JavaScript
-      - C++
-  - category: Languages.Computer
+      - TypeScript
+  - category: Technologies.Web
     items:
-      - HTML
-      - CSS
-      - JSON
-      - LaTeX
-      - YAML
-  - category: Languages.Real
+      - React
+      - HTML/CSS
+      - Node.js
+  - category: Tools.DevOps
     items:
-      - English
-      - Spanish
-  - category: Hobbies.Software
-    items:
-      - Minecraft Modding
-      - iOS Jailbreaking
-  - category: Hobbies.Hardware
-    items:
-      - Overclocking
-      - Undervolting
+      - Git
+      - GitHub Actions
+      - Docker
