@@ -175,12 +175,10 @@ class ProfileBuilder:
                 sorted_langs = sorted(lang_map.values(), key=lambda x: x["size"], reverse=True)
                 profile.top_languages = sorted_langs
                 
-                # Pinned Repositories override yaml projects if available
-                pinned = user_data.get("pinnedItems", {}).get("nodes", [])
                 if pinned:
                     profile.featured_projects = [] # Clear yaml fallback
                     for p in pinned:
-                        if p.get("name", "").lower() == "clinexa":
+                        if p.get("name", "").lower() not in ["hiretrack", "synapseiq"]:
                             continue
                         lang = p.get("primaryLanguage") or {}
                         profile.featured_projects.append(FeaturedProject(
