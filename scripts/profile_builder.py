@@ -75,9 +75,9 @@ class ProfileBuilder:
 
     def _validate_env(self):
         load_dotenv()
-        username = os.environ.get("GITHUB_USERNAME")
+        username = os.environ.get("GITHUB_USERNAME") or os.environ.get("GITHUB_REPOSITORY_OWNER")
         if not username:
-            raise ValueError("GITHUB_USERNAME is missing from environment variables.")
+            raise ValueError("GITHUB_USERNAME or GITHUB_REPOSITORY_OWNER is missing from environment variables.")
         return username
 
     def build(self, validate: bool = True) -> Profile:
@@ -88,7 +88,7 @@ class ProfileBuilder:
             try:
                 self._load_yaml()
                 load_dotenv()
-                username = os.environ.get("GITHUB_USERNAME", "")
+                username = os.environ.get("GITHUB_USERNAME") or os.environ.get("GITHUB_REPOSITORY_OWNER", "")
             except Exception:
                 username = ""
                 

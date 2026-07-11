@@ -85,7 +85,7 @@ class GitHubClient:
     def __init__(self):
         load_dotenv()
         self.token = os.environ.get("GITHUB_TOKEN")
-        self.username = os.environ.get("GITHUB_USERNAME")
+        self.username = os.environ.get("GITHUB_USERNAME") or os.environ.get("GITHUB_REPOSITORY_OWNER")
         self.cache_dir = os.path.join("data", "cache")
         self.cache_ttl = 15 * 60  # 15 minutes in seconds
 
@@ -126,7 +126,7 @@ class GitHubClient:
         variables = variables or {}
         if 'login' not in variables:
             if not self.username:
-                return Result(success=False, error="Missing GITHUB_USERNAME in environment")
+                return Result(success=False, error="Missing GITHUB_USERNAME or GITHUB_REPOSITORY_OWNER in environment")
             variables['login'] = self.username
             
         cache_key = self._get_cache_key(query, variables)
