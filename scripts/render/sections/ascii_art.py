@@ -27,6 +27,12 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
         r"$$$B:                                      ",
         r"$$*                                        ",
         r"S                                          ",
+        r"S                                          ",
+        r"S                                          ",
+        r"S                                          ",
+        r"?                                          ",
+        r"+                                          ",
+        r".                                          ",
         r"                                           ",
         r"                                           "
     ]

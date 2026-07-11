@@ -12,9 +12,6 @@ social_links:
   - platform: LinkedIn
     url: https://linkedin.com/in/shinucherian90
     username: shinucherian90
-  - platform: Portfolio
-    url: https://portfolio-4qpv.vercel.app
-    username: portfolio-4qpv
 
 featured_projects:
   - name: HireTrack
