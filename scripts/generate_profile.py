@@ -45,7 +45,7 @@ def generate():
         # 5. Generate final SVG using the canvas engine
         svg_content = layout.build()
         
-        output_path = os.path.join("assets", "generated", f"{theme_name}.svg")
+        output_path = os.path.join("assets", "generated", f"{theme_name}_v2.svg")
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(svg_content)
