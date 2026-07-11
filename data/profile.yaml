@@ -1,0 +1,47 @@
+name: Andrew Grant
+subtitle: CAM (Computer Aided Manufacturing) Operator
+location: Earth
+role: Software & Hardware Tinkerer
+current_focus: Building automated tooling
+education: Self-taught
+
+contacts:
+  email_personal: agrantnmac@gmail.com
+  email_work: Andrew.Grant@ttmtech.com
+  discord: andrew6rant
+
+social_links:
+  - platform: LinkedIn
+    url: https://linkedin.com/in/andrew6rant
+    username: andrew6rant
+
+featured_projects:
+  - name: ExampleProject
+    description: A placeholder for a featured project
+
+skills:
+  - category: Languages.Programming
+    items:
+      - Java
+      - Python
+      - JavaScript
+      - C++
+  - category: Languages.Computer
+    items:
+      - HTML
+      - CSS
+      - JSON
+      - LaTeX
+      - YAML
+  - category: Languages.Real
+    items:
+      - English
+      - Spanish
+  - category: Hobbies.Software
+    items:
+      - Minecraft Modding
+      - iOS Jailbreaking
+  - category: Hobbies.Hardware
+    items:
+      - Overclocking
+      - Undervolting
