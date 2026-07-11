@@ -22,7 +22,11 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
         
     lines.append(stat_line(". Contributions: ", profile.total_contributions, "Stars: ", profile.total_stars))
     lines.append(stat_line(". Commits: ", profile.total_commits, "Followers: ", profile.followers))
-    lines.append(stat_line(". Issues: ", profile.total_issues, "PRs: ", profile.total_prs))
+    
+    repos_s = str(profile.total_repos)
+    lines.append([
+        (". Total Repos: ", theme.color_label), (get_dots(". Total Repos: ", repos_s), theme.color_dots), (repos_s, theme.color_value)
+    ])
     
     if profile.top_languages:
         langs = ", ".join(l['name'] for l in profile.top_languages[:3])
@@ -30,11 +34,10 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
             (". Top Languages: ", theme.color_label), (get_dots(". Top Languages: ", langs), theme.color_dots), (langs, theme.color_value)
         ])
         
-    if profile.last_updated:
-        ts = profile.last_updated.strftime("%Y-%m-%d %H:%M UTC")
-        lines.append([
-            (". Last Updated: ", theme.color_label), (get_dots(". Last Updated: ", ts), theme.color_dots), (ts, theme.color_muted)
-        ])
+    loc_val = f"{profile.loc_total:,} ( {profile.loc_additions:,}++, {profile.loc_deletions:,}-- )"
+    lines.append([
+        (". Lines of Code: ", theme.color_label), (get_dots(". Lines of Code: ", loc_val), theme.color_dots), (loc_val, theme.color_value)
+    ])
         
     elements = []
     current_y = 0

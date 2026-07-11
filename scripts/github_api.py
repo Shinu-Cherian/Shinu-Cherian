@@ -324,6 +324,43 @@ class GitHubClient:
         sorted_langs = sorted(lang_map.values(), key=lambda x: x.size, reverse=True)
         return Result(success=True, data=sorted_langs)
 
+    def get_repo_stats(self, repo_name: str) -> Dict[str, int]:
+        url = f"https://api.github.com/repos/{self.username}/{repo_name}/stats/contributors"
+        headers = DEFAULT_HEADERS.copy()
+        if self.token:
+            headers["Authorization"] = f"Bearer {self.token}"
+        try:
+            cache_key = self._get_cache_key(f"repo_stats_{repo_name}", {})
+            cached = self._read_cache(cache_key)
+            if cached:
+                data = cached
+            else:
+                res = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+                if res.status_code == 200:
+                    data = res.json()
+                    self._write_cache(cache_key, data)
+                elif res.status_code == 202:
+                    time.sleep(1.0)
+                    res = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+                    if res.status_code == 200:
+                        data = res.json()
+                        self._write_cache(cache_key, data)
+                    else:
+                        data = []
+                else:
+                    data = []
+            
+            additions = 0
+            deletions = 0
+            for contributor in data:
+                if contributor.get("author", {}).get("login", "").lower() == self.username.lower():
+                    for week in contributor.get("weeks", []):
+                        additions += week.get("a", 0)
+                        deletions += week.get("d", 0)
+            return {"additions": additions, "deletions": deletions}
+        except Exception:
+            return {"additions": 0, "deletions": 0}
+
     def get_all_profile_data(self) -> Result[dict]:
         query = USER_INFO_FRAGMENT + REPO_FRAGMENT + """
         query($login: String!) {
@@ -343,6 +380,7 @@ class GitHubClient:
                 
                 repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
                     nodes {
+                        name
                         stargazerCount
                         languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
                             edges {
@@ -368,6 +406,22 @@ class GitHubClient:
         if not res.success:
             return Result(success=False, error=res.error)
             
+        user_data = res.data.get('data', {}).get('user', {})
+        repos = user_data.get('repositories', {}).get('nodes', [])
+        total_additions = 0
+        total_deletions = 0
+        for r in repos:
+            name = r.get('name')
+            if name:
+                stats = self.get_repo_stats(name)
+                total_additions += stats["additions"]
+                total_deletions += stats["deletions"]
+                
+        res.data['loc_stats'] = {
+            'additions': total_additions,
+            'deletions': total_deletions,
+            'total': total_additions - total_deletions
+        }
         return Result(success=True, data=res.data)
 
     def get_contributions(self) -> Result[ContributionData]:

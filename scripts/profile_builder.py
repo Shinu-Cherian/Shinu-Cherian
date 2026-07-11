@@ -55,6 +55,10 @@ class Profile:
     total_prs: int = 0
     total_issues: int = 0
     total_contributions: int = 0
+    total_repos: int = 0
+    loc_additions: int = 0
+    loc_deletions: int = 0
+    loc_total: int = 0
     top_languages: List[Dict[str, Any]] = field(default_factory=list)
     
     # Meta State
@@ -162,6 +166,12 @@ class ProfileBuilder:
                             lang_map[lname]["size"] += size
                             
                 profile.total_stars = total_stars
+                profile.total_repos = len(repos)
+                loc_stats = api_res.data.get('loc_stats', {})
+                profile.loc_additions = loc_stats.get('additions', 0)
+                profile.loc_deletions = loc_stats.get('deletions', 0)
+                profile.loc_total = loc_stats.get('total', 0)
+                
                 sorted_langs = sorted(lang_map.values(), key=lambda x: x["size"], reverse=True)
                 profile.top_languages = sorted_langs
                 
