@@ -5,7 +5,7 @@ from scripts.render.utils import get_dots, measure_line
 
 def render(profile: Profile, theme: Theme) -> SectionResult:
     title = f"{profile.github_username or profile.name.lower().replace(' ', '')}@github "
-    sep = "-" * max(10, 75 - len(title))
+    sep = "-" * max(10, 85 - len(title))
     
     lines = [
         [(title, theme.color_title), (sep, theme.color_dots)],

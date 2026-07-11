@@ -4,7 +4,7 @@ from scripts.render.core import SectionResult, Element, TextSegment
 from scripts.render.utils import get_dots, measure_line
 
 def render(profile: Profile, theme: Theme) -> SectionResult:
-    lines = [[("- GitHub Stats ", theme.color_title), ("-" * 60, theme.color_dots)]]
+    lines = [[("- GitHub Stats ", theme.color_title), ("-" * 70, theme.color_dots)]]
     
     if not profile.github_available:
         lines.append([(". API Status: ", theme.color_label), (get_dots(". API Status: ", "Offline (Using Cached/YAML Data)"), theme.color_dots), ("Offline (Using Cached/YAML Data)", theme.color_error)])
@@ -12,8 +12,8 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
     def stat_line(l1, v1, l2, v2):
         v1_s = str(v1)
         v2_s = str(v2)
-        d1 = get_dots(l1, v1_s + " ", 35)
-        d2 = get_dots(l2, v2_s, 37)
+        d1 = get_dots(l1, v1_s + " ", 40)
+        d2 = get_dots(l2, v2_s, 42)
         return [
             (l1, theme.color_label), (d1, theme.color_dots), (v1_s + " ", theme.color_value),
             ("| ", theme.color_dots),

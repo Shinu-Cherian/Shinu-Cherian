@@ -26,7 +26,7 @@ class Theme:
     ascii_color: str = ""
     
     def get_char_width(self):
-        return self.font_size * 0.62
+        return self.font_size * 0.55
 
 @dataclass
 class DarkTheme(Theme):

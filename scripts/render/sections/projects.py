@@ -7,7 +7,7 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
     if not profile.featured_projects:
         return SectionResult(width=0, height=0, elements=[])
         
-    lines = [[("- Featured Projects ", theme.color_title), ("-" * 55, theme.color_dots)]]
+    lines = [[("- Featured Projects ", theme.color_title), ("-" * 65, theme.color_dots)]]
     
     for p in profile.featured_projects[:3]:
         label = f". {p.name}: "

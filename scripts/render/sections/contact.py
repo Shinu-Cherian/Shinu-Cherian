@@ -4,7 +4,7 @@ from scripts.render.core import SectionResult, Element, TextSegment
 from scripts.render.utils import get_dots, measure_line
 
 def render(profile: Profile, theme: Theme) -> SectionResult:
-    lines_data = [[("- Contact & Links ", theme.color_title), ("-" * 57, theme.color_dots)]]
+    lines_data = [[("- Contact & Links ", theme.color_title), ("-" * 67, theme.color_dots)]]
     
     for k, v in profile.contacts.items():
         label = f". {k.replace('_', '.').title()}: "

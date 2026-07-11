@@ -1,4 +1,4 @@
-def get_dots(label: str, value: str, target_length: int = 75) -> str:
+def get_dots(label: str, value: str, target_length: int = 85) -> str:
     """Helper to pad a label with dotted lines for precise right-alignment."""
     dots_len = target_length - len(label) - len(value)
     return "." * max(1, dots_len) + " "
