@@ -13,7 +13,11 @@ class SVGCanvas:
         svg = f'        <text x="{x}" y="{y}" class="{css_class}">'
         for seg in segments:
             escaped = seg.text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-            svg += f'<tspan fill="{seg.color}">{escaped}</tspan>'
+            tspan = f'<tspan fill="{seg.color}">{escaped}</tspan>'
+            if seg.href:
+                svg += f'<a href="{seg.href}" target="_blank">{tspan}</a>'
+            else:
+                svg += tspan
         svg += '</text>\\n'
         self.elements_svg.append(svg)
         

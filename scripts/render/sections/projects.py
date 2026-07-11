@@ -1,25 +1,26 @@
 from scripts.profile_builder import Profile
 from scripts.render.theme import Theme
 from scripts.render.core import SectionResult, Element, TextSegment
-from scripts.render.utils import pad, measure_line
+from scripts.render.utils import get_dots, measure_line
 
 def render(profile: Profile, theme: Theme) -> SectionResult:
     if not profile.featured_projects:
         return SectionResult(width=0, height=0, elements=[])
         
-    lines = [[("- Featured Projects ", theme.color_title), ("---------------------------------------------", theme.color_dots)]]
+    lines = [[("- Featured Projects ", theme.color_title), ("-" * 55, theme.color_dots)]]
     
     for p in profile.featured_projects[:3]:
         label = f". {p.name}: "
         desc = p.description or ""
-        if len(desc) > 35:
-            desc = desc[:32] + "..."
+        if len(desc) > 40:
+            desc = desc[:37] + "..."
         stats = f" [{p.language}]" if p.language else ""
+        val = f"{desc}{stats}"
         
         lines.append([
             (label, theme.color_label),
-            (pad(label, 25), theme.color_dots),
-            (f"{desc}{stats}", theme.color_value)
+            (get_dots(label, val), theme.color_dots),
+            (val, theme.color_value)
         ])
         
     elements = []

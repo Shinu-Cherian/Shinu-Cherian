@@ -1,26 +1,27 @@
 from scripts.profile_builder import Profile
 from scripts.render.theme import Theme
 from scripts.render.core import SectionResult, Element, TextSegment
-from scripts.render.utils import pad, measure_line
+from scripts.render.utils import get_dots, measure_line
 
 def render(profile: Profile, theme: Theme) -> SectionResult:
-    lines = [[("- Contact & Links ", theme.color_title), ("-----------------------------------------------", theme.color_dots)]]
+    lines_data = [[("- Contact & Links ", theme.color_title), ("-" * 57, theme.color_dots)]]
     
     for k, v in profile.contacts.items():
         label = f". {k.replace('_', '.').title()}: "
-        lines.append([
-            (label, theme.color_label),
-            (pad(label, 25), theme.color_dots),
-            (v, theme.color_value)
+        href = f"mailto:{v}" if "@" in v else None
+        lines_data.append([
+            (label, theme.color_label, None),
+            (get_dots(label, v), theme.color_dots, None),
+            (v, theme.color_value, href)
         ])
         
     for link in profile.social_links:
         label = f". {link.platform}: "
         val = link.username or link.url
-        lines.append([
-            (label, theme.color_label),
-            (pad(label, 25), theme.color_dots),
-            (val, theme.color_value)
+        lines_data.append([
+            (label, theme.color_label, None),
+            (get_dots(label, val), theme.color_dots, None),
+            (val, theme.color_value, link.url)
         ])
         
     elements = []
@@ -28,8 +29,14 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
     max_width = 0
     char_width = theme.get_char_width()
     
-    for line_segments in lines:
-        segments = [TextSegment(t, c) for t, c in line_segments]
+    for line_tuples in lines_data:
+        segments = []
+        for item in line_tuples:
+            if len(item) == 3:
+                segments.append(TextSegment(item[0], item[1], item[2]))
+            else:
+                segments.append(TextSegment(item[0], item[1]))
+        
         line_width = measure_line(segments, char_width)
         max_width = max(max_width, line_width)
         

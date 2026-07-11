@@ -5,6 +5,7 @@ from typing import List, Optional
 class TextSegment:
     text: str
     color: str
+    href: Optional[str] = None
 
 @dataclass
 class Element:

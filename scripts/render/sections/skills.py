@@ -1,7 +1,7 @@
 from scripts.profile_builder import Profile
 from scripts.render.theme import Theme
 from scripts.render.core import SectionResult, Element, TextSegment
-from scripts.render.utils import pad, measure_line
+from scripts.render.utils import get_dots, measure_line
 
 def render(profile: Profile, theme: Theme) -> SectionResult:
     if not profile.skills:
@@ -18,7 +18,7 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
         
         segments = [
             TextSegment(label, theme.color_label),
-            TextSegment(pad(label, 30), theme.color_dots),
+            TextSegment(get_dots(label, val), theme.color_dots),
             TextSegment(val, theme.color_value)
         ]
         

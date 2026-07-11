@@ -1,39 +1,39 @@
 from scripts.profile_builder import Profile
 from scripts.render.theme import Theme
 from scripts.render.core import SectionResult, Element, TextSegment
-from scripts.render.utils import pad, measure_line
+from scripts.render.utils import get_dots, measure_line
 
 def render(profile: Profile, theme: Theme) -> SectionResult:
-    lines = [[("- GitHub Stats ", theme.color_title), ("--------------------------------------------------", theme.color_dots)]]
+    lines = [[("- GitHub Stats ", theme.color_title), ("-" * 60, theme.color_dots)]]
     
     if not profile.github_available:
-        lines.append([(". API Status: ", theme.color_label), (pad(". API Status: "), theme.color_dots), ("Offline (Using Cached/YAML Data)", theme.color_error)])
+        lines.append([(". API Status: ", theme.color_label), (get_dots(". API Status: ", "Offline (Using Cached/YAML Data)"), theme.color_dots), ("Offline (Using Cached/YAML Data)", theme.color_error)])
         
-    lines.append([
-        (". Contributions: ", theme.color_label), (pad(". Contributions: "), theme.color_dots), (f"{profile.total_contributions:,} ", theme.color_value),
-        ("| ", theme.color_dots), ("Stars: ", theme.color_label), (pad("Stars: ", 10), theme.color_dots), (f"{profile.total_stars:,}", theme.color_value)
-    ])
-    
-    lines.append([
-        (". Commits: ", theme.color_label), (pad(". Commits: "), theme.color_dots), (f"{profile.total_commits:,} ", theme.color_value),
-        ("| ", theme.color_dots), ("Followers: ", theme.color_label), (pad("Followers: ", 10), theme.color_dots), (f"{profile.followers:,}", theme.color_value)
-    ])
-    
-    lines.append([
-        (". Issues: ", theme.color_label), (pad(". Issues: "), theme.color_dots), (f"{profile.total_issues:,} ", theme.color_value),
-        ("| ", theme.color_dots), ("PRs: ", theme.color_label), (pad("PRs: ", 10), theme.color_dots), (f"{profile.total_prs:,}", theme.color_value)
-    ])
+    def stat_line(l1, v1, l2, v2):
+        v1_s = str(v1)
+        v2_s = str(v2)
+        d1 = get_dots(l1, v1_s + " ", 35)
+        d2 = get_dots(l2, v2_s, 37)
+        return [
+            (l1, theme.color_label), (d1, theme.color_dots), (v1_s + " ", theme.color_value),
+            ("| ", theme.color_dots),
+            (l2, theme.color_label), (d2, theme.color_dots), (v2_s, theme.color_value)
+        ]
+        
+    lines.append(stat_line(". Contributions: ", profile.total_contributions, "Stars: ", profile.total_stars))
+    lines.append(stat_line(". Commits: ", profile.total_commits, "Followers: ", profile.followers))
+    lines.append(stat_line(". Issues: ", profile.total_issues, "PRs: ", profile.total_prs))
     
     if profile.top_languages:
         langs = ", ".join(l['name'] for l in profile.top_languages[:3])
         lines.append([
-            (". Top Languages: ", theme.color_label), (pad(". Top Languages: "), theme.color_dots), (langs, theme.color_value)
+            (". Top Languages: ", theme.color_label), (get_dots(". Top Languages: ", langs), theme.color_dots), (langs, theme.color_value)
         ])
         
     if profile.last_updated:
         ts = profile.last_updated.strftime("%Y-%m-%d %H:%M UTC")
         lines.append([
-            (". Last Updated: ", theme.color_label), (pad(". Last Updated: "), theme.color_dots), (ts, theme.color_muted)
+            (". Last Updated: ", theme.color_label), (get_dots(". Last Updated: ", ts), theme.color_dots), (ts, theme.color_muted)
         ])
         
     elements = []

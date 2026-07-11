@@ -5,12 +5,10 @@ role: Software Engineer
 current_focus: Building AI-powered Full Stack Applications
 education: Master of Computer Applications (MCA)
 
-contacts: {}
+contacts:
+  email_personal: shinucherian90@gmail.com
 
 social_links:
-  - platform: GitHub
-    url: https://github.com/Shinu-Cherian
-    username: Shinu-Cherian
   - platform: LinkedIn
     url: https://linkedin.com/in/shinucherian90
     username: shinucherian90

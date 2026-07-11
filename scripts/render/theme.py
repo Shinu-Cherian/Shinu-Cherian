@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Theme:
-    padding: int = 40
+    padding: int = 50
     column_gap: int = 20
     line_height: int = 20
     section_gap: int = 20

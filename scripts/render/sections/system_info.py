@@ -1,19 +1,19 @@
 from scripts.profile_builder import Profile
 from scripts.render.theme import Theme
 from scripts.render.core import SectionResult, Element, TextSegment
-from scripts.render.utils import pad, measure_line
+from scripts.render.utils import get_dots, measure_line
 
 def render(profile: Profile, theme: Theme) -> SectionResult:
     title = f"{profile.github_username or profile.name.lower().replace(' ', '')}@github "
-    sep = "-" * max(10, 60 - len(title))
+    sep = "-" * max(10, 75 - len(title))
     
     lines = [
         [(title, theme.color_title), (sep, theme.color_dots)],
-        [(". Name: ", theme.color_label), (pad(". Name: "), theme.color_dots), (profile.name, theme.color_value)],
-        [(". Role: ", theme.color_label), (pad(". Role: "), theme.color_dots), (profile.role, theme.color_value)],
-        [(". Education: ", theme.color_label), (pad(". Education: "), theme.color_dots), (profile.education, theme.color_value)],
-        [(". Location: ", theme.color_label), (pad(". Location: "), theme.color_dots), (profile.location, theme.color_value)],
-        [(". Focus: ", theme.color_label), (pad(". Focus: "), theme.color_dots), (profile.current_focus, theme.color_value)]
+        [(". Name: ", theme.color_label), (get_dots(". Name: ", profile.name), theme.color_dots), (profile.name, theme.color_value)],
+        [(". Role: ", theme.color_label), (get_dots(". Role: ", profile.role), theme.color_dots), (profile.role, theme.color_value)],
+        [(". Education: ", theme.color_label), (get_dots(". Education: ", profile.education), theme.color_dots), (profile.education, theme.color_value)],
+        [(". Location: ", theme.color_label), (get_dots(". Location: ", profile.location), theme.color_dots), (profile.location, theme.color_value)],
+        [(". Focus: ", theme.color_label), (get_dots(". Focus: ", profile.current_focus), theme.color_dots), (profile.current_focus, theme.color_value)]
     ]
     
     elements = []
