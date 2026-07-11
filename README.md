@@ -8,5 +8,5 @@
   <br />
   <br />
 
-  <a href="mailto:shinucherian90@gmail.com"><img src="https://img.shields.io/badge/-Email-010409?style=flat&logo=gmail&logoColor=79C0FF&v=1" alt="Email" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://linkedin.com/in/shinucherian90"><img src="https://img.shields.io/badge/-LinkedIn-010409?style=flat&logo=linkedin&logoColor=79C0FF&v=1" alt="LinkedIn" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://portfolio-4qpv.vercel.app"><img src="https://img.shields.io/badge/-Portfolio-010409?style=flat&logo=vercel&logoColor=79C0FF&v=1" alt="Portfolio" /></a>
+  <a href="mailto:shinucherian90@gmail.com"><img src="https://img.shields.io/badge/-Email-010409?style=flat&logo=gmail&logoColor=79C0FF&v=2" alt="Email" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://linkedin.com/in/shinucherian90"><img src="https://img.shields.io/badge/-LinkedIn-010409?style=flat&logo=LinkedIn&logoColor=79C0FF&v=2" alt="LinkedIn" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://portfolio-4qpv.vercel.app"><img src="https://img.shields.io/badge/-Portfolio-010409?style=flat&logo=vercel&logoColor=79C0FF&v=2" alt="Portfolio" /></a>
 </div>

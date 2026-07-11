@@ -29,8 +29,7 @@ def render(profile: Profile, theme: Theme) -> SectionResult:
         r"S                                          ",
         r"S                                          ",
         r"S                                          ",
-        r"S                                          ",
-        r"?                                          "
+        r"S                                          "
     ]
     
     char_width = theme.get_char_width()
