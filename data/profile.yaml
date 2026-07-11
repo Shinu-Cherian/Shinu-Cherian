@@ -5,13 +5,9 @@ role: Software Engineer
 current_focus: Building AI-powered Full Stack Applications
 education: Master of Computer Applications (MCA)
 
-contacts:
-  email_personal: shinucherian90@gmail.com
+contacts: {}
 
-social_links:
-  - platform: LinkedIn
-    url: https://linkedin.com/in/shinucherian90
-    username: shinucherian90
+social_links: []
 
 featured_projects:
   - name: HireTrack
