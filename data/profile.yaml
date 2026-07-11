@@ -1,37 +1,69 @@
 name: Shinu Cherian
-subtitle: Software Developer
+subtitle: Software Engineer
 location: India
-role: Full Stack Developer
-current_focus: Building awesome applications
-education: Self-taught
+role: Software Engineer
+current_focus: Building AI-powered Full Stack Applications
+education: Master of Computer Applications (MCA)
 
-contacts:
-  email_personal: your.email@example.com
-  github: Shinu-Cherian
+contacts: {}
 
 social_links:
+  - platform: GitHub
+    url: https://github.com/Shinu-Cherian
+    username: Shinu-Cherian
   - platform: LinkedIn
-    url: https://linkedin.com/in/shinu-cherian
-    username: shinu-cherian
+    url: https://linkedin.com/in/shinucherian90
+    username: shinucherian90
+  - platform: Portfolio
+    url: https://portfolio-4qpv.vercel.app
+    username: portfolio-4qpv
 
 featured_projects:
-  - name: GitHub Profile
-    description: Dynamic terminal-themed SVG profile README
-    language: Python
+  - name: HireTrack
+    description: AI job tracker, resume analysis, career roadmap
+    language: React, Django
+  - name: SynapseIQ
+    description: AI team knowledge platform with RAG & search
+    language: Next.js, FastAPI
 
 skills:
   - category: Languages.Programming
     items:
       - Python
+      - Java
       - JavaScript
-      - TypeScript
-  - category: Technologies.Web
+      - SQL
+  - category: Languages.Frontend
     items:
       - React
-      - HTML/CSS
-      - Node.js
-  - category: Tools.DevOps
+      - Next.js
+      - TypeScript
+      - Tailwind CSS
+      - GSAP
+  - category: Languages.Backend
+    items:
+      - Django
+      - FastAPI
+      - Flask
+      - REST APIs
+  - category: AI
+    items:
+      - OpenAI API
+      - Groq API
+      - LangChain
+      - RAG
+      - Prompt Engineering
+  - category: Databases
+    items:
+      - PostgreSQL
+      - MySQL
+      - MongoDB
+      - SQLite
+      - Redis
+  - category: Cloud / DevOps
     items:
       - Git
-      - GitHub Actions
+      - GitHub
       - Docker
+      - Linux
+      - AWS (Learning)
