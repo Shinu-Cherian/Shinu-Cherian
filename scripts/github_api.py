@@ -378,7 +378,7 @@ class GitHubClient:
                     }
                 }
                 
-                repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
+                repositories(first: 100, ownerAffiliations: OWNER) {
                     nodes {
                         name
                         stargazerCount
